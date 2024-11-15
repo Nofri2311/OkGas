@@ -1,60 +1,108 @@
 package com.kewirausahaan.okgas.ui.search
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
+import android.icu.util.Calendar
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.kewirausahaan.okgas.R
+import com.kewirausahaan.okgas.databinding.FragmentBookingKostBinding
+import java.text.SimpleDateFormat
+import java.util.Locale
+import kotlin.text.format
+import kotlin.text.get
+import kotlin.text.isNotBlank
+import kotlin.text.set
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BookingKostFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BookingKostFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentBookingKostBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: BookingKostViewModel by viewModels()
+    private val calendar = Calendar.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_booking_kost, container, false)
+    ): View {
+        _binding = FragmentBookingKostBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BookingKostFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BookingKostFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val kostImage = arguments?.getString("kostImage")
+        val kostName = arguments?.getString("kostName")
+        val kostLocation = arguments?.getString("kostLocation")
+
+        // Tampilkan data di UI
+        Glide.with(this).load(kostImage).into(binding.bookingKostImage)
+        binding.disableDetailName.setText(kostName)
+        binding.disableDetailLocation.setText(kostLocation)
+
+        // Set up the date and time picker for inputMoveDate
+        binding.inputBookingDate.setOnClickListener {
+            showDateTimePicker()
+        }
+
+        binding.buttonBook.setOnClickListener {
+            val name = binding.inputBookingName.text.toString()
+            val date = binding.inputBookingDate.text.toString()
+            val phone = binding.inputBookingNumber.text.toString()
+
+            if (name.isNotBlank() && date.isNotBlank() && phone.isNotBlank()) {
+                viewModel.saveOrder(name, date, phone, kostName.toString(), kostLocation.toString())
+                Toast.makeText(requireContext(), "Booking successful!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Please fill in all fields.", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun showDateTimePicker() {
+        // Date picker
+        val datePicker = DatePickerDialog(
+            requireContext(),
+            { _, year, month, dayOfMonth ->
+                calendar.set(year, month, dayOfMonth)
+                showTimePicker()
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePicker.show()
+    }
+
+    private fun showTimePicker() {
+        // Time picker
+        val timePicker = TimePickerDialog(
+            requireContext(),
+            { _, hourOfDay, minute ->
+                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                calendar.set(Calendar.MINUTE, minute)
+
+                // Format date and time
+                val dateTimeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm",
+                    Locale.getDefault())
+                binding.inputBookingDate.setText(dateTimeFormat.format(calendar.time))
+            },
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            true
+        )
+        timePicker.show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
+import com.kewirausahaan.okgas.R
 import com.kewirausahaan.okgas.databinding.FragmentDetailKostBinding  // Ganti dengan nama package Anda
 
 class DetailKostFragment : Fragment() {
@@ -47,7 +50,18 @@ class DetailKostFragment : Fragment() {
                 Glide.with(binding.detailImage.context)
                     .load(uri)
                     .into(binding.detailImage)
+
+                binding.buttonCheck.setOnClickListener{
+                    val bundle = bundleOf(
+                        "kostImage" to uri.toString(),
+                        "kostName" to kost.name,
+                        "kostLocation" to kost.location
+                    )
+                    findNavController().navigate(R.id.action_navigation_detail_kost_to_navigation_booking_kost, bundle)
+                }
             }
         }
+
+
     }
 }

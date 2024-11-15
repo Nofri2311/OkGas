@@ -56,6 +56,15 @@
         android:name="com.kewirausahaan.okgas.ui.search.BookingKostFragment"
         android:label="@string/booking_kost"
         tools:layout="@layout/fragment_booking_kost" >
+        <argument
+            android:name="kostImage"
+            app:argType="string" />
+        <argument
+            android:name="kostName"
+            app:argType="string" />
+        <argument
+            android:name="kostLocation"
+            app:argType="string" />
         <action
             android:id="@+id/action_navigation_booking_kost_to_navigation_detail_order"
             app:destination="@id/navigation_detail_order" />
