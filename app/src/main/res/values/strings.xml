@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">OkGas</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_search">Cari Kos</string>
+    <string name="title_move">Pindahan Barang</string>
+    <string name="title_history">Riwayat Pesanan</string>
+    <string name="title_profile">Profil</string>
+    <string name="detail">Detail</string>
+    <string name="welcome">Selamat Datang di OkGas</string>
+    <string name="description">OkGas hadir di Malang untuk membantu Masyarakat khususnya mahasiswa dengan layanan pindahan barang dan pengecekan kamar kost, membuat proses pindahan jadi lebih mudah dan nyaman. Kami siap menjadi solusi praktis untuk kebutuhan pindahan Anda!</string>
+    <string name="service">Layanan Kami</string>
+    <string name="image_description">Image Description</string>
+    <string name="service_name">Service Name</string>
+    <string name="search_kost">Cari Kost</string>
+    <string name="search_name">Kost Name</string>
+    <string name="search_gender">Kost Gender</string>
+    <string name="search_location">Kost Location</string>
+    <string name="search_price">Kost Price</string>
+    <string name="detail_kost">Detail Kost</string>
+    <string name="detail_name">Nama Kost</string>
+    <string name="detail_gender">Jenis Kost</string>
+    <string name="detail_location">Lokasi Kost</string>
+    <string name="detail_price">Harga Kost</string>
+    <string name="detail_description">Deskripsi Kos</string>
+    <string name="check">Pesan Pengecekan Kos</string>
+    <string name="booking_kost">Pesan Pengecekan Kos</string>
+    <string name="booking_name">Nama Pelanggan</string>
+    <string name="booking_date">Tanggal Pengecekan</string>
+    <string name="booking_number">Nomor Telepon</string>
+    <string name="input_booking_name">Masukkan nama anda</string>
+    <string name="input_booking_date">Pilih tanggal pengecekan</string>
+    <string name="input_booking_number">Masukkan nomor telepon</string>
+    <string name="move_service">Pindahan Barang</string>
+    <string name="move_detail">Layanan pindahan barang Ok Gas hadir untuk memenuhi kebutuhan pengiriman barang di wilayah Kota Malang dengan menggunakan kendaraan Pick Up Bak. Layanan ini dapat mengangkut barang dengan kapasitas maksimal 800 kg. Layanan kami cocok untuk berbagai jenis pengiriman pindahan, seperti paket sedang/besar, alat elektronik, muatan berat, bahan bangunan, serta perlengkapan konstruksi event. Dengan pengiriman yang cepat dan aman, layanan pindahan barang Ok Gas siap membantu Anda memindahkan barang ke tempat tujuan dengan mudah dan efisien.</string>
+    <string name="move">Pesan Pindahan Barang</string>
+    <string name="booking_move">Pesan Pindahan Barang</string>
+    <string name="move_name">Nama Pelanggan</string>
+    <string name="hint_move_name">Masukkan nama anda</string>
+    <string name="move_location_now">Lokasi Saat Ini</string>
+    <string name="input_move_location_now">Masukkan lokasi saat ini</string>
+    <string name="move_location_destination">Lokasi Tujuan</string>
+    <string name="input_move_location_destination">Masukkan lokasi tujuan</string>
+    <string name="move_date">Tanggal Pindah</string>
+    <string name="input_move_date">Pilih tanggal pindah</string>
+    <string name="detail_order">Detail Pesanan</string>
+    <string name="detail_service">Jenis Layanan</string>
+    <string name="order_name">Nama Pemesan</string>
+    <string name="order_date">Tanggal Pesanan</string>
+    <string name="order_status">Status</string>
+    <string name="order_price">Harga</string>
+    <string name="detail_partner">Detail Partner</string>
+    <string name="partner_name">Nama Mitra</string>
+    <string name="partner_number">Nomor HP Mitra</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

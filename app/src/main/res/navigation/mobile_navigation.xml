@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.kewirausahaan.okgas.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.kewirausahaan.okgas.ui.search.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_detail_kost"
+            app:destination="@id/navigation_detail_kost" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_move"
+        android:name="com.kewirausahaan.okgas.ui.move.MoveFragment"
+        android:label="@string/title_move"
+        tools:layout="@layout/fragment_move" >
+        <action
+            android:id="@+id/action_navigation_move_to_navigation_booking_move"
+            app:destination="@id/navigation_booking_move" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.kewirausahaan.okgas.ui.history.HistoryFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_navigation_history_to_navigation_detail_order"
+            app:destination="@id/navigation_detail_order" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.kewirausahaan.okgas.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_detail_kost"
+        android:name="com.kewirausahaan.okgas.ui.search.DetailKostFragment"
+        android:label="@string/detail_kost"
+        tools:layout="@layout/fragment_detail_kost" >
+        <action
+            android:id="@+id/action_navigation_detail_kost_to_navigation_booking_kost"
+            app:destination="@id/navigation_booking_kost" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_booking_kost"
+        android:name="com.kewirausahaan.okgas.ui.search.BookingKostFragment"
+        android:label="@string/booking_kost"
+        tools:layout="@layout/fragment_booking_kost" >
+        <action
+            android:id="@+id/action_navigation_booking_kost_to_navigation_detail_order"
+            app:destination="@id/navigation_detail_order" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_booking_move"
+        android:name="com.kewirausahaan.okgas.ui.move.BookingMoveFragment"
+        android:label="@string/booking_move"
+        tools:layout="@layout/fragment_booking_move" >
+        <action
+            android:id="@+id/action_navigation_booking_move_to_navigation_detail_order"
+            app:destination="@id/navigation_detail_order" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_detail_order"
+        android:name="com.kewirausahaan.okgas.ui.DetailOrderFragment"
+        android:label="@string/detail_order"
+        tools:layout="@layout/fragment_detail_order" />
+
+</navigation>
