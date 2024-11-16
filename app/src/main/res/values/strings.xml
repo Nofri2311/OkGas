@@ -4,7 +4,7 @@
     <string name="title_search">Cari Kos</string>
     <string name="title_move">Pindahan Barang</string>
     <string name="title_history">Riwayat Pesanan</string>
-    <string name="title_profile">Profil</string>
+    <string name="title_profile">Profil Saya</string>
     <string name="detail">Detail</string>
     <string name="welcome">Selamat Datang di OkGas</string>
     <string name="description">OkGas hadir di Malang untuk membantu Masyarakat khususnya mahasiswa dengan layanan pindahan barang dan pengecekan kamar kost, membuat proses pindahan jadi lebih mudah dan nyaman. Kami siap menjadi solusi praktis untuk kebutuhan pindahan Anda!</string>
@@ -53,6 +53,9 @@
     <string name="partner_number">Nomor HP Mitra</string>
     <string name="move_history">Riwayat Pindahan</string>
     <string name="search_history">Riwayat Pengecekan</string>
+    <string name="profile_name">Nama</string>
+    <string name="profile_email">Email</string>
+    <string name="logout">Logout</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

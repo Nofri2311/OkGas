@@ -41,7 +41,11 @@
         android:id="@+id/navigation_profile"
         android:name="com.kewirausahaan.okgas.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_detail_kost"
         android:name="com.kewirausahaan.okgas.ui.search.DetailKostFragment"
@@ -83,5 +87,10 @@
         android:name="com.kewirausahaan.okgas.ui.DetailOrderFragment"
         android:label="@string/detail_order"
         tools:layout="@layout/fragment_detail_order" />
+    <activity
+        android:id="@+id/navigation_login"
+        android:name="com.kewirausahaan.okgas.ui.auth.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 
 </navigation>
