@@ -7,7 +7,7 @@ import java.util.UUID
 
 class BookingMoveViewModel : ViewModel() {
 
-    private val database: DatabaseReference = FirebaseDatabase.getInstance().getReference("order")
+    private val database: DatabaseReference = FirebaseDatabase.getInstance().getReference("order_move")
 
     fun saveOrder(name: String, locationNow: String, locationDestination: String, date: String, phone: String) {
         val orderId = UUID.randomUUID().toString()
@@ -20,8 +20,8 @@ class BookingMoveViewModel : ViewModel() {
             "price" to 70000,
             "service" to "pindahan",
             "status" to "mencari",
-            "partner_name" to null,
-            "partner_phone" to null
+            "partner_name" to "",
+            "partner_phone" to ""
         )
 
         database.child(orderId).setValue(orderData)

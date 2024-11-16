@@ -51,6 +51,8 @@
     <string name="detail_partner">Detail Partner</string>
     <string name="partner_name">Nama Mitra</string>
     <string name="partner_number">Nomor HP Mitra</string>
+    <string name="move_history">Riwayat Pindahan</string>
+    <string name="search_history">Riwayat Pengecekan</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
