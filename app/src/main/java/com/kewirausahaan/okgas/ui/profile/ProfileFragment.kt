@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
 import com.kewirausahaan.okgas.R
 import com.kewirausahaan.okgas.databinding.FragmentProfileBinding
 
@@ -34,13 +35,21 @@ class ProfileFragment : Fragment() {
             binding.detailProfileEmail.text = profile.email
 
             // Menampilkan gambar profil jika ada
-            if (profile.pictureUrl != null) {
-                Glide.with(this)
-                    .load(profile.pictureUrl)
-                    .into(binding.profileImage)
+            if (profile.picture == null || profile.picture == "") {
+                val storageReference = FirebaseStorage.getInstance().getReference("/picture/default.jpg")
+                storageReference.downloadUrl.addOnSuccessListener { uri ->
+                    Glide.with(binding.profileImage.context)
+                        .load(uri)
+                        .into(binding.profileImage)
+                }
             } else {
                 // Set gambar profil sebagai null jika tidak ada
-                binding.profileImage.setImageDrawable(null)
+                val storageReference = FirebaseStorage.getInstance().getReference("/picture/${profile.picture}.jpg")
+                storageReference.downloadUrl.addOnSuccessListener { uri ->
+                    Glide.with(binding.profileImage.context)
+                        .load(uri)
+                        .into(binding.profileImage)
+                }
             }
         }
 

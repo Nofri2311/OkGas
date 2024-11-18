@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">OkGas</string>
     <string name="title_home">Beranda</string>
-    <string name="title_search">Cari Kos</string>
+    <string name="title_search">Pengecekan Kost</string>
     <string name="title_move">Pindahan Barang</string>
     <string name="title_history">Riwayat Pesanan</string>
     <string name="title_profile">Profil Saya</string>
@@ -45,7 +45,8 @@
     <string name="detail_order">Detail Pesanan</string>
     <string name="detail_service">Jenis Layanan</string>
     <string name="order_name">Nama Pemesan</string>
-    <string name="order_date">Tanggal Pesanan</string>
+    <string name="order_created">Tanggal Pesanan</string>
+    <string name="order_date">Tanggal Pengecekan</string>
     <string name="order_status">Status</string>
     <string name="order_price">Harga</string>
     <string name="detail_partner">Detail Partner</string>

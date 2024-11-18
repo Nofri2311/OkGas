@@ -53,9 +53,11 @@ class DetailKostFragment : Fragment() {
 
                 binding.buttonCheck.setOnClickListener{
                     val bundle = bundleOf(
-                        "kostImage" to uri.toString(),
+                        "kostImage" to kost.image,
                         "kostName" to kost.name,
-                        "kostLocation" to kost.location
+                        "kostLocation" to kost.location,
+                        "kostGender" to kost.gender,
+                        "kostPrice" to formattedPrice
                     )
                     findNavController().navigate(R.id.action_navigation_detail_kost_to_navigation_booking_kost, bundle)
                 }

@@ -34,8 +34,11 @@
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" >
         <action
-            android:id="@+id/action_navigation_history_to_navigation_detail_order"
-            app:destination="@id/navigation_detail_order" />
+            android:id="@+id/action_navigation_history_to_navigation_detail_order_move"
+            app:destination="@id/navigation_detail_order_move" />
+        <action
+            android:id="@+id/action_navigation_history_to_navigation_detail_order_kost"
+            app:destination="@id/navigation_detail_order_kost" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
@@ -69,9 +72,15 @@
         <argument
             android:name="kostLocation"
             app:argType="string" />
+        <argument
+            android:name="kostGender"
+            app:argType="string" />
+        <argument
+            android:name="kostPrice"
+            app:argType="string" />
         <action
-            android:id="@+id/action_navigation_booking_kost_to_navigation_detail_order"
-            app:destination="@id/navigation_detail_order" />
+            android:id="@+id/action_navigation_booking_kost_to_navigation_detail_order_kost"
+            app:destination="@id/navigation_detail_order_kost" />
     </fragment>
     <fragment
         android:id="@+id/navigation_booking_move"
@@ -79,18 +88,23 @@
         android:label="@string/booking_move"
         tools:layout="@layout/fragment_booking_move" >
         <action
-            android:id="@+id/action_navigation_booking_move_to_navigation_detail_order"
-            app:destination="@id/navigation_detail_order" />
+            android:id="@+id/action_navigation_booking_move_to_navigation_detail_order_move"
+            app:destination="@id/navigation_detail_order_move" />
     </fragment>
-    <fragment
-        android:id="@+id/navigation_detail_order"
-        android:name="com.kewirausahaan.okgas.ui.DetailOrderFragment"
-        android:label="@string/detail_order"
-        tools:layout="@layout/fragment_detail_order" />
     <activity
         android:id="@+id/navigation_login"
         android:name="com.kewirausahaan.okgas.ui.auth.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/navigation_detail_order_move"
+        android:name="com.kewirausahaan.okgas.ui.detail.DetailBookingMoveFragment"
+        android:label="fragment_detail_booking_move"
+        tools:layout="@layout/fragment_detail_booking_move" />
+    <fragment
+        android:id="@+id/navigation_detail_order_kost"
+        android:name="com.kewirausahaan.okgas.ui.detail.DetailBookingKostFragment"
+        android:label="fragment_detail_booking_kost"
+        tools:layout="@layout/fragment_detail_booking_kost" />
 
 </navigation>

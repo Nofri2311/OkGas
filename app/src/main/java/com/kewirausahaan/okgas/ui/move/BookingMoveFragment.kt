@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.google.firebase.database.ServerValue
 import com.kewirausahaan.okgas.databinding.FragmentBookingMoveBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class BookingMoveFragment : Fragment() {
@@ -44,10 +46,14 @@ class BookingMoveFragment : Fragment() {
             val date = binding.inputMoveDate.text.toString()
             val phone = binding.inputMoveNumber.text.toString()
 
+            val createdTimestamp = Date().time
+            val formatter = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
+            val created = formatter.format(createdTimestamp)
+
             if (name.isNotBlank() && locationNow.isNotBlank() && locationDestination.isNotBlank() &&
                 date.isNotBlank() && phone.isNotBlank()) {
 
-                viewModel.saveOrder(name, locationNow, locationDestination, date, phone)
+                viewModel.saveOrder(name, locationNow, locationDestination, date, phone, created)
                 Toast.makeText(requireContext(), "Booking successful!", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Please fill in all fields.", Toast.LENGTH_SHORT).show()
@@ -79,7 +85,7 @@ class BookingMoveFragment : Fragment() {
                 calendar.set(Calendar.MINUTE, minute)
 
                 // Format date and time
-                val dateTimeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+                val dateTimeFormat = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
                 binding.inputMoveDate.setText(dateTimeFormat.format(calendar.time))
             },
             calendar.get(Calendar.HOUR_OF_DAY),

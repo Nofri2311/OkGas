@@ -48,7 +48,7 @@ class RegisterActivity : AppCompatActivity() {
                         val userMap = mapOf(
                             "name" to name,
                             "email" to email,
-                            "image" to "",
+                            "picture" to "",
                         )
                         database.child("users").child(uid).setValue(userMap).addOnCompleteListener { dbTask ->
                             if (dbTask.isSuccessful) {

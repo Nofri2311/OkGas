@@ -11,9 +11,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
 import com.kewirausahaan.okgas.R
 import com.kewirausahaan.okgas.databinding.FragmentBookingKostBinding
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 import kotlin.text.format
 import kotlin.text.get
@@ -41,9 +43,18 @@ class BookingKostFragment : Fragment() {
         val kostImage = arguments?.getString("kostImage")
         val kostName = arguments?.getString("kostName")
         val kostLocation = arguments?.getString("kostLocation")
+        val kostGender = arguments?.getString("kostGender")
+        val kostPrice = arguments?.getString("kostPrice")
+
+        val storageReference = FirebaseStorage.getInstance().getReference("/kost/${kostImage}.png")
+        storageReference.downloadUrl.addOnSuccessListener { uri ->
+            Glide.with(binding.bookingKostImage.context)
+                .load(uri)
+                .into(binding.bookingKostImage)
+        }
 
         // Tampilkan data di UI
-        Glide.with(this).load(kostImage).into(binding.bookingKostImage)
+//        Glide.with(this).load(kostImage).into(binding.bookingKostImage)
         binding.disableDetailName.setText(kostName)
         binding.disableDetailLocation.setText(kostLocation)
 
@@ -57,8 +68,12 @@ class BookingKostFragment : Fragment() {
             val date = binding.inputBookingDate.text.toString()
             val phone = binding.inputBookingNumber.text.toString()
 
+            val createdTimestamp = Date().time
+            val formatter = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())
+            val created = formatter.format(createdTimestamp)
+
             if (name.isNotBlank() && date.isNotBlank() && phone.isNotBlank()) {
-                viewModel.saveOrder(name, date, phone, kostName.toString(), kostLocation.toString())
+                viewModel.saveOrder(name, date, phone, kostName.toString(), kostImage.toString() ,kostLocation.toString(), kostGender.toString(), kostPrice.toString(), created)
                 Toast.makeText(requireContext(), "Booking successful!", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Please fill in all fields.", Toast.LENGTH_SHORT).show()
@@ -90,7 +105,7 @@ class BookingKostFragment : Fragment() {
                 calendar.set(Calendar.MINUTE, minute)
 
                 // Format date and time
-                val dateTimeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm",
+                val dateTimeFormat = SimpleDateFormat("dd-MM-yyyy HH:mm",
                     Locale.getDefault())
                 binding.inputBookingDate.setText(dateTimeFormat.format(calendar.time))
             },
