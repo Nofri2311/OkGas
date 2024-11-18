@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.kewirausahaan.okgas.R
 import com.kewirausahaan.okgas.databinding.FragmentDetailBookingMoveBinding
@@ -34,6 +36,7 @@ class DetailBookingMoveFragment : Fragment() {
         // Mengambil data dari Bundle
         val created = arguments?.getString("created")
         val date = arguments?.getString("date")
+        val id = arguments?.getString("id")
         val locationDestination = arguments?.getString("location_destination")
         val locationNow = arguments?.getString("location_now")
         val phone = arguments?.getString("phone")
@@ -45,7 +48,7 @@ class DetailBookingMoveFragment : Fragment() {
         val status = arguments?.getString("status")
 
         // Mengirim data ke ViewModel
-        viewModel.setData(created, date, locationDestination, locationNow, phone, name, partnerName, partnerPhone, partnerPhoto,
+        viewModel.setData(created, date, id, locationDestination, locationNow, phone, name, partnerName, partnerPhone, partnerPhoto,
             price, status)
 
         // Menampilkan data di UI
@@ -77,6 +80,17 @@ class DetailBookingMoveFragment : Fragment() {
         val formattedPrice = String.format("%,d", price)
         binding.detailOrderPrice.text = "Rp $formattedPrice"
         binding.detailOrderStatus.text = status
+
+        if(status == "Mencari Mitra") {
+            binding.orderCancel.visibility = View.VISIBLE
+            binding.orderCancel.setOnClickListener {
+                val databaseReference = FirebaseDatabase.getInstance().getReference("order_move")
+                databaseReference.child(id.toString()).child("status").setValue("Pesanan Dibatalkan")
+                Toast.makeText(context, "Pesanan dibatalkan", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            binding.orderCancel.visibility = View.GONE
+        }
 
     }
 

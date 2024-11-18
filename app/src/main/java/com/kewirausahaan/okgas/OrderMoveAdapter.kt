@@ -23,6 +23,7 @@ class OrderMoveAdapter : ListAdapter<OrderMove, OrderMoveAdapter.OrderMoveViewHo
                 val bundle = Bundle()
                 bundle.putString("created", orderData.created)
                 bundle.putString("date", orderData.date)
+                bundle.putString("id", orderData.id)
                 bundle.putString("location_destination", orderData.location_destination)
                 bundle.putString("location_now", orderData.location_now)
                 bundle.putString("phone", orderData.phone)

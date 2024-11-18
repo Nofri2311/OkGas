@@ -12,6 +12,9 @@ class DetailBookingMoveViewModel : ViewModel() {
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> = _date
 
+    private val _id = MutableLiveData<String>()
+    val id: LiveData<String> = _id
+
     private val _locationDestination = MutableLiveData<String>()
     val locationDestination: LiveData<String> = _locationDestination
 
@@ -42,6 +45,7 @@ class DetailBookingMoveViewModel : ViewModel() {
     fun setData(
         created: String?,
         date: String?,
+        id: String?,
         locationDestination: String?,
         locationNow: String?,
         phone: String?,
@@ -54,6 +58,7 @@ class DetailBookingMoveViewModel : ViewModel() {
     ) {
         _created.value = created!!
         _date.value = date!!
+        _id.value = id!!
         _locationDestination.value = locationDestination!!
         _locationNow.value = locationNow!!
         _phone.value = phone!!

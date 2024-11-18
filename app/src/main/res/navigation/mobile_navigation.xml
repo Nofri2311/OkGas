@@ -79,8 +79,8 @@
             android:name="kostPrice"
             app:argType="string" />
         <action
-            android:id="@+id/action_navigation_booking_kost_to_navigation_detail_order_kost"
-            app:destination="@id/navigation_detail_order_kost" />
+            android:id="@+id/action_navigation_booking_kost_to_navigation_history"
+            app:destination="@id/navigation_history" />
     </fragment>
     <fragment
         android:id="@+id/navigation_booking_move"
@@ -88,8 +88,8 @@
         android:label="@string/booking_move"
         tools:layout="@layout/fragment_booking_move" >
         <action
-            android:id="@+id/action_navigation_booking_move_to_navigation_detail_order_move"
-            app:destination="@id/navigation_detail_order_move" />
+            android:id="@+id/action_navigation_booking_move_to_navigation_history"
+            app:destination="@id/navigation_history" />
     </fragment>
     <activity
         android:id="@+id/navigation_login"

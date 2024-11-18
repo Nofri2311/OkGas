@@ -10,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.kewirausahaan.okgas.R
 import com.kewirausahaan.okgas.databinding.FragmentBookingKostBinding
@@ -73,10 +75,12 @@ class BookingKostFragment : Fragment() {
             val created = formatter.format(createdTimestamp)
 
             if (name.isNotBlank() && date.isNotBlank() && phone.isNotBlank()) {
-                viewModel.saveOrder(name, date, phone, kostName.toString(), kostImage.toString() ,kostLocation.toString(), kostGender.toString(), kostPrice.toString(), created)
-                Toast.makeText(requireContext(), "Booking successful!", Toast.LENGTH_SHORT).show()
+                val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
+                viewModel.saveOrder(name, date, phone, kostName.toString(), kostImage.toString() ,kostLocation.toString(), kostGender.toString(), kostPrice.toString(), created, userId)
+                Toast.makeText(requireContext(), "Sukses Membuat Pesanan", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_navigation_booking_kost_to_navigation_history)
             } else {
-                Toast.makeText(requireContext(), "Please fill in all fields.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Isi semua kolom", Toast.LENGTH_SHORT).show()
             }
         }
     }

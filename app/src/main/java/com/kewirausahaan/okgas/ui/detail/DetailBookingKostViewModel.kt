@@ -12,6 +12,9 @@ class DetailBookingKostViewModel : ViewModel() {
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> = _date
 
+    private val _id = MutableLiveData<String>()
+    val id: LiveData<String> = _id
+
     private val _kostImage = MutableLiveData<String>()
     val kostImage: LiveData<String> = _kostImage
 
@@ -51,6 +54,7 @@ class DetailBookingKostViewModel : ViewModel() {
     fun setData(
         created: String?,
         date: String?,
+        id: String?,
         kostImage: String?,
         kostLocation: String?,
         kostName: String?,
@@ -65,6 +69,7 @@ class DetailBookingKostViewModel : ViewModel() {
     ) {
         _created.value = created!!
         _date.value = date!!
+        _id.value = id!!
         _kostImage.value = kostImage!!
         _kostLocation.value = kostLocation!!
         _kostName.value = kostName!!

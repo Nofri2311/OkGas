@@ -9,9 +9,10 @@ class BookingKostViewModel : ViewModel() {
 
     private val database: DatabaseReference = FirebaseDatabase.getInstance().getReference("order_search")
 
-    fun saveOrder(name: String, date: String, phone: String, kostName: String, kostImage: String, kostLocation: String, kostGender: String, kostPrice: String ,created: String) {
+    fun saveOrder(name: String, date: String, phone: String, kostName: String, kostImage: String, kostLocation: String, kostGender: String, kostPrice: String ,created: String, userId: String) {
         val orderId = UUID.randomUUID().toString()
         val orderData = mapOf(
+            "id" to orderId,
             "name" to name,
             "date" to date,
             "phone" to phone,
@@ -22,8 +23,9 @@ class BookingKostViewModel : ViewModel() {
             "kost_price" to kostPrice,
             "price" to 35000,
             "service" to "pengecekan",
-            "status" to "mencari",
+            "status" to "Mencari Mitra",
             "created" to created,
+            "user_id" to userId,
             "partner_photo" to "",
             "partner_name" to "",
             "partner_phone" to ""

@@ -3,6 +3,7 @@ package com.kewirausahaan.okgas.ui.history
 data class OrderMove(
     val created: String = "",
     val date: String = "",
+    val id: String = "",
     val location_destination: String = "",
     val location_now: String = "",
     val name: String = "",

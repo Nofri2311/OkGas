@@ -9,7 +9,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ServerValue
+import com.kewirausahaan.okgas.R
 import com.kewirausahaan.okgas.databinding.FragmentBookingMoveBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -52,9 +55,10 @@ class BookingMoveFragment : Fragment() {
 
             if (name.isNotBlank() && locationNow.isNotBlank() && locationDestination.isNotBlank() &&
                 date.isNotBlank() && phone.isNotBlank()) {
-
-                viewModel.saveOrder(name, locationNow, locationDestination, date, phone, created)
-                Toast.makeText(requireContext(), "Booking successful!", Toast.LENGTH_SHORT).show()
+                val userId = FirebaseAuth.getInstance().currentUser?.uid.toString()
+                viewModel.saveOrder(name, locationNow, locationDestination, date, phone, created, userId)
+                Toast.makeText(requireContext(), "Sukses Membuat Pesanan", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_navigation_booking_move_to_navigation_history)
             } else {
                 Toast.makeText(requireContext(), "Please fill in all fields.", Toast.LENGTH_SHORT).show()
             }

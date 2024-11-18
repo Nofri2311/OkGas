@@ -23,6 +23,7 @@ class OrderSearchAdapter : ListAdapter<OrderSearch, OrderSearchAdapter.OrderSear
                 val bundle = Bundle()
                 bundle.putString("created", orderData.created)
                 bundle.putString("date", orderData.date)
+                bundle.putString("id", orderData.id)
                 bundle.putString("kost_image", orderData.kost_image)
                 bundle.putString("kost_location", orderData.kost_location)
                 bundle.putString("kost_name", orderData.kost_name)
